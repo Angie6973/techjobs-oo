@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
+
+
 /**
  * Created by LaunchCode
  */
@@ -27,12 +29,12 @@ public class JobController {
     {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
-
-        model.addAttribute("name", jobData.findAll().get(id).getName());
-        model.addAttribute("employer", jobData.findAll().get(id).getEmployer());
-        model.addAttribute("location", jobData.findAll().get(id).getLocation());
-        model.addAttribute("position", jobData.findAll().get(id).getPositionType());
-        model.addAttribute("skill", jobData.findAll().get(id).getCoreCompetency());
+//.getName
+        model.addAttribute("job", jobData.findById(id)); //findAll().get(id));
+        //model.addAttribute("employer", jobData.findAll().get(id).getEmployer());
+        //model.addAttribute("location", jobData.findAll().get(id).getLocation());
+        //model.addAttribute("position", jobData.findAll().get(id).getPositionType());
+        //model.addAttribute("skill", jobData.findAll().get(id).getCoreCompetency());
 
         return "job-detail";
 
@@ -71,8 +73,16 @@ public class JobController {
         model.addAttribute("position", newJob.getPositionType());
         model.addAttribute("skill", newJob.getCoreCompetency());
 
-        return "job-detail";
+            //return "redirect:job-detail/?id=" + newJob.getId();
+            //return "job-detail";
+            return "redirect:/job?id=" + newJob.getId();
+            //return "redirect:/?id=" + newJob.getId();
+        }
+
+
+
+
 
     }
 
-}
+
